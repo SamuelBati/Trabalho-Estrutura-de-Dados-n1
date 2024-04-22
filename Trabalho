@@ -1,0 +1,47 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct {
+    char nome[50];
+    char telefone[15];
+    char curso[50];
+    float nota1;
+    float nota2;
+} Aluno;
+
+void calcularSituacao(char *nome, float nota1, float nota2) {
+    float media = (nota1 + nota2) / 2;
+    if (media >= 7.0) {
+        printf("%s: %.2f APROVADO\n", nome, media);
+    } else {
+        printf("%s: %.2f REPROVADO\n", nome, media);
+    }
+}
+
+int main() {
+    FILE *entrada = fopen("DadosEntrada.csv", "r");
+    FILE *saida = fopen("SituacaoFinal.csv", "w");
+
+    if (entrada == NULL || saida == NULL) {
+        printf("Erro ao abrir os arquivos.\n");
+        return 1;
+    }
+
+    char cabecalho[100];
+    fgets(cabecalho, sizeof(cabecalho), entrada);
+
+    fprintf(saida, "Nome, Média, Situação\n");
+    char linha[100];
+    while (fgets(linha, sizeof(linha), entrada)) {
+        Aluno aluno;
+        sscanf(linha, "%[^,],%[^,],%[^,],%f,%f", aluno.nome, aluno.telefone, aluno.curso, &aluno.nota1, &aluno.nota2);
+        calcularSituacao(aluno.nome, aluno.nota1, aluno.nota2); 
+        fprintf(saida, "%s,%.2f,%s\n", aluno.nome, (aluno.nota1 + aluno.nota2) / 2, ((aluno.nota1 + aluno.nota2) / 2) >= 7.0 ? "APROVADO" : "REPROVADO");
+    }
+
+    fclose(entrada);
+    fclose(saida);
+
+    return 0;
+}
