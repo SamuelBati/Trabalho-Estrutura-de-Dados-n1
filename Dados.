@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct
+{
+    char nome[50];
+    char telefone[15];
+    char curso[50];
+    float nota1;
+    float nota2;
+} Aluno;
+
+void calcularSituacao(Aluno *aluno);
