@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "dados.h"
+
+void calcularSituacao(Aluno *aluno)
+{
+    float media = (aluno->nota1 + aluno->nota2) / 2;
+    if (media >= 7.0)
+    {
+        printf("%s: %.2f APROVADO\n", aluno->nome, media);
+    }
+    else
+    {
+        printf("%s: %.2f REPROVADO\n", aluno->nome, media);
+    }
+}
