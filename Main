@@ -3,22 +3,21 @@
 #include <string.h>
 #include "dados.h"
 
-#define TAMANHO 100
-
-int main()
-{
+int main() {
     FILE *entrada = fopen("DadosEntrada.csv", "r");
     FILE *saida = fopen("SituacaoFinal.csv", "w");
     
-    if (entrada == NULL || saida == NULL)
-    {
+    if (entrada == NULL || saida == NULL) {
         printf("Erro ao abrir os arquivos.\n");
         return 1;
     }
 
-    char linha[TAMANHO];
-    while (fgets(linha, sizeof(linha), entrada))
-    {
+    char cabecalho [100];
+    fgets(cabecalho, sizeof(cabecalho), entrada);
+    fprintf (saida," Nome, M/edia, Situacao \n");
+
+    char linha[100];
+    while (fgets(linha, sizeof(linha), entrada)) {
         Aluno aluno;
         sscanf(linha, "%[^,],%[^,],%[^,],%f,%f", aluno.nome, aluno.telefone, aluno.curso, &aluno.nota1, &aluno.nota2);
         calcularSituacao(&aluno);
