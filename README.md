@@ -8,7 +8,7 @@ O presente trabalho trata-se de um algoritmo capaz de criar um programa que leia
 2. Baixar o compilador g++;
 3. Baixar a extensão Compile&Run;
 4. Baixar o MinGW-w64;
-5. git clone https://github.com/ https:/SamuelBati/Trabalho-Estrutura-de-Dados-n1 
+5. git clone https://github.com/SamuelBati/Trabalho-Estrutura-de-Dados-n1  
 6. Abrir a pasta Trabalho-Pratico-1;
 7. Teclar Ctrl + ‘, ou clicar no ícone de três pontinhos dispostos horizontalmente na barra de menus do VS Code, e, em seguida, clicar em “Terminal”, e, depois, em “Novo Terminal”;
 8. Digitar o seguinte comando: “gcc -o programa dados.h funcoes.c main.c”, e teclar “Enter”;
